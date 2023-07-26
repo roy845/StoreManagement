@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   products: [],
-  totalPurchased: 0,
+  totalPurchased: localStorage.getItem("totalPurchases"),
 };
 
 export const productsSlice = createSlice({
@@ -15,6 +15,7 @@ export const productsSlice = createSlice({
     },
     incrementTotalPurchases: (state, action) => {
       state.totalPurchased += 1;
+      localStorage.setItem("totalPurchases", state.totalPurchased);
     },
     decrementQuantity: (state, action) => {
       // Find the index of the product that matches the ID in the action payload
