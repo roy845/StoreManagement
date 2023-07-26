@@ -22,6 +22,10 @@ This project is a store management application built using React, Redux (for sta
 
 <img src="https://imgtr.ee/images/2023/07/26/c3d24975ce55509f954da7a42c153e9f.png" alt="c3d24975ce55509f954da7a42c153e9f.png" width = "800px" height = "400px">
 
+- Add product
+
+<img src="https://imgtr.ee/images/2023/07/26/e8836158a69a8da8cec32eaad9bf8c0b.png" alt="e8836158a69a8da8cec32eaad9bf8c0b.png" width = "800px" height = "400px">
+
 4. Edit Product Page: Allows Admin users to update or delete product data.
 
 <img src="https://imgtr.ee/images/2023/07/26/72c782ff8a8529a2a1a44ae885dc01a1.png" alt="72c782ff8a8529a2a1a44ae885dc01a1.png" width = "800px" height = "400px">
@@ -29,6 +33,12 @@ This project is a store management application built using React, Redux (for sta
 5. Customers Page: Showcases customers and their purchased products and purchased dates. Users can also buy products from this page.
 
 <img src="https://imgtr.ee/images/2023/07/26/3f7db13da80942aa8c46804afd6183de.png" alt="3f7db13da80942aa8c46804afd6183de.png" width = "800px" height = "400px">
+
+-Add product
+
+<img src="https://imgtr.ee/images/2023/07/26/70591e10beafe2a4f0b898fafe64f90c.png" alt="70591e10beafe2a4f0b898fafe64f90c.png" width = "800px" height = "400px">
+
+<img src="https://imgtr.ee/images/2023/07/26/1406624dababbaee97a370889dc5af1a.png" alt="1406624dababbaee97a370889dc5af1a.png" width = "800px" height = "400px">
 
 6. Edit Customer Page: Allows Admin users to update or delete customer data.
 
