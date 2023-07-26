@@ -86,7 +86,7 @@ This project is a store management application built using React, Redux (for sta
 2. Open a new terminal.
 3. Navigate to the client directory: `cd client`.
 4. Install dependencies: `npm/yarn install`.
-5. Create a `.env` file in the server directory.
+5. Create a `.env` file in the client directory.
 6. Add your Firebase configuration in a `.env` file at the root of the project.
 7. Run the client: npm/yarn start.
 8. Open http://localhost:3000 to view it in the browser.
