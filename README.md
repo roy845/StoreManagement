@@ -16,7 +16,7 @@ This project is a store management application built using React, Redux (for sta
 
 2. Menu Navigation: Provides navigation to "Products", "Customers", and "Purchases" pages and also for logging out the current connected user.
 
-<img src="https://imgtr.ee/images/2023/07/26/444eaf5c1d4cb703bac2233d29d2b2c4.png" alt="444eaf5c1d4cb703bac2233d29d2b2c4.png" width = "800px" height = "400px">
+<img src="https://imgtr.ee/images/2023/07/26/444eaf5c1d4cb703bac2233d29d2b2c4.png" alt="444eaf5c1d4cb703bac2233d29d2b2c4.png" height="100%">
 
 3. Products Page: Displays total amount of purchased products and detailed product data. Users can add new products to customers from this page.
 
