@@ -28,6 +28,10 @@ export const productsSlice = createSlice({
         state.products[index].Quantity -= 1;
       }
     },
+    resetTotalPurchases: (state, action) => {
+      state.totalPurchased = 0;
+      localStorage.removeItem("totalPurchases");
+    },
     addProductToCustomer: (state, action) => {},
   },
 });
@@ -37,6 +41,7 @@ export const {
   incrementTotalPurchases,
   addProductToCustomer,
   decrementQuantity,
+  resetTotalPurchases,
 } = productsSlice.actions;
 
 export const selectProducts = (state) => state.products.products;
