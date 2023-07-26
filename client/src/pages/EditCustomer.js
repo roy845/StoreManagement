@@ -55,6 +55,7 @@ const EditCustomer = () => {
       try {
         setIsLoading(true);
 
+        // Query the 'purchases' collection where 'CustomerID' equals to 'customerId'
         const q = query(
           collection(db, "purchases"),
           where("CustomerID", "==", customerId)
@@ -62,31 +63,28 @@ const EditCustomer = () => {
 
         const querySnapshot = await getDocs(q);
 
-        // Get all unique product IDs in an array
-        const productIdsArray = querySnapshot.docs.map(
-          (document) => document.data().ProductID
-        );
+        // Store all product IDs in a Set to avoid duplicates
+        const productIdsSet = new Set();
+        querySnapshot.docs.forEach((document) => {
+          const productId = document.data().ProductID;
+          productIdsSet.add(productId);
+        });
 
-        // Fetch all product documents in parallel using Promise.all()
-        const fetchProductPromises = productIdsArray.map((productId) =>
-          getDoc(doc(db, "products", productId))
-        );
+        // Initialize an empty array to store products
+        let productsList = [];
 
-        // Wait for all product fetches to complete
-        const productSnapshots = await Promise.all(fetchProductPromises);
+        // For each unique product ID, fetch the product document from the 'products' collection
+        for (const productId of productIdsSet) {
+          const productDocRef = doc(db, "products", productId);
+          const productDocSnap = await getDoc(productDocRef);
 
-        // Initialize an array to store the products
-        const productsList = [];
-
-        // Add fetched products to the productsList array
-        productSnapshots.forEach((productSnapshot, index) => {
-          if (productSnapshot.exists()) {
-            const productId = productIdsArray[index];
-            productsList.push({ ...productSnapshot.data(), id: productId });
+          // If the document exists, add it to the 'productsList' array
+          if (productDocSnap.exists()) {
+            productsList.push({ ...productDocSnap.data(), id: productId });
           } else {
             console.log("No such document!");
           }
-        });
+        }
 
         // Set the 'purchased' state to the list of fetched products
         setPurchased(productsList);
@@ -97,6 +95,7 @@ const EditCustomer = () => {
       }
     };
 
+    setIsLoading(false);
     fetchPurchasedProducts();
   }, [customerId]);
 
