@@ -34,7 +34,7 @@ This project is a store management application built using React, Redux (for sta
 
 <img src="https://imgtr.ee/images/2023/07/26/3f7db13da80942aa8c46804afd6183de.png" alt="3f7db13da80942aa8c46804afd6183de.png" width = "800px" height = "400px">
 
--Add product
+- Add product
 
 <img src="https://imgtr.ee/images/2023/07/26/70591e10beafe2a4f0b898fafe64f90c.png" alt="70591e10beafe2a4f0b898fafe64f90c.png" width = "800px" height = "400px">
 
