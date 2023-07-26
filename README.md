@@ -1,46 +1,114 @@
-# Getting Started with Create React App and Redux
+# React Store Management App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+This project is a store management application built using React, Redux (for state management), and Firebase and MongoDB (for database and user authentication). The application provides an interface for managing products, customers, and purchases, with initial data including two products and two customers. Users can interact with the system through several pages including "Menu - as navigation drawer", "Products", "Edit Product", "Customers", "Edit Customer", and "Purchases". Additionally, a user authentication & authorization system is implemented using MongoDB and JWT authentication & authorization service.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+1. Menu Navigation: Provides navigation to "Products", "Customers", and "Purchases" pages and also for logging out the current connected user.
+2. Products Page: Displays total amount of purchased products and detailed product data. Users can add new products to customers from this page.
+3. Edit Product Page: Allows Admin users to update or delete product data.
+4. Customers Page: Showcases customers and their purchased products. Users can also buy products from this page.
+5. Edit Customer Page: Allows Admin users to update or delete customer data.
+6. Purchases Page: Allows users to search for purchases by product, customer, or date.
+7. User Authentication & Authorization: User login/register features using JWT authentication and MongoDB . User roles are defined as "User" and "Admin".
 
-### `npm start`
+## Database Collections
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Products**:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- ID (Primary Key)
+- Name
+- Price
+- Quantity
 
-### `npm test`
+**Customers**:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- ID (Primary Key)
+- First Name
+- Last Name
+- City
 
-### `npm run build`
+**Purchases**:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- ID (Primary Key)
+- CustomerID (Foreign Key)
+- ProductID (Foreign Key)
+- Date
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Users (for authentication & authorization)**:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Username (Primary Key)
+- Password
+- Role ("User" or "Admin")
 
-### `npm run eject`
+## Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Clone the repository: git clone https://github.com/username/react-store-management.git
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Client
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Open a new terminal.
+3. Navigate to the client directory: `cd client`.
+4. Install dependencies: `npm/yarn install`.
+5. Create a `.env` file in the server directory.
+6. Add your Firebase configuration in a `.env` file at the root of the project.
+7. Run the client: npm/yarn start.
+8. Open http://localhost:3000 to view it in the browser.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Server
 
-## Learn More
+1. Open a new terminal.
+2. Navigate to the server directory: `cd server`.
+3. Install dependencies: `npm/yarn install`.
+4. Create a `.env` file in the server directory.
+5. In the `.env` file, set the following variables:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   - `PORT`: The port number on which the server will run (e.g., `PORT=8800`).
+   - `MONGO_DB_URI`: The MongoDB connection URI for connecting to the database (e.g., `MONGODB_URI=mongodb://localhost:27017/mydatabase`).
+   - `JWT_SECRET_KEY`:This key used for authentication and authorization.
+     Here is how you can generate this key:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+     1.Open a terminal.
+
+     2.Type the following command and press Enter to generate a random JWT secret key
+
+     require('crypto').randomBytes(32).toString('hex')
+
+     3.Copy the generated secret key.
+
+     4.Open the .env file in the server directory.
+
+     5.Set the JWT_SECRET_KEY variable by pasting the generated secret key.
+
+     For example:
+
+     JWT_SECRET_KEY=generated_secret_key
+
+6. Save the `.env` file.
+7. Run the server: `node server.js` or npm/yarn start.
+
+## Permissions
+
+1. All registered users can see the "Products", "Customers", and "Purchases" pages.
+2. Only Admins can edit a product or customer data.
+
+## Technologies Used
+
+## Technologies Used
+
+- **VS Code**
+  ![VS Code](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2048px-Visual_Studio_Code_1.35_icon.svg.png)
+- **NodeJS**
+  ![NodeJS](IMAGE_URL)
+- **React**
+  ![React](IMAGE_URL)
+- **Redux**
+  ![Redux](IMAGE_URL)
+- **Firebase**
+  ![Firebase](IMAGE_URL)
+- **MongoDB**
+  ![MongoDB](IMAGE_URL)
+- **Express**
+  ![Express](IMAGE_URL)
+- **JSON Web Tokens**
+  ![JWT](IMAGE_URL)
