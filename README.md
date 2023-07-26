@@ -96,18 +96,23 @@ This project is a store management application built using React, Redux (for sta
 
 - **VS Code**
   <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2048px-Visual_Studio_Code_1.35_icon.svg.png" width = "60px" height = "60px">
-  ![VS Code]()
 - **NodeJS**
-  ![NodeJS](IMAGE_URL)
+  <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/2560px-Node.js_logo.svg.png" width = "60px" height = "60px">
+
 - **React**
-  ![React](IMAGE_URL)
+  <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" width = "60px" height = "60px">
+
 - **Redux**
-  ![Redux](IMAGE_URL)
+  <img src = "https://www.svgrepo.com/show/303557/redux-logo.svg" width = "60px" height = "60px">
+
 - **Firebase**
-  ![Firebase](IMAGE_URL)
+  <img src = "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-firebase-icon.png" width = "60px" height = "60px">
+
 - **MongoDB**
-  ![MongoDB](IMAGE_URL)
+  <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/2560px-MongoDB_Logo.svg.png" width = "60px" height = "60px">
+
 - **Express**
-  ![Express](IMAGE_URL)
+  <img src = "https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png" width = "60px" height = "60px">
+
 - **JSON Web Tokens**
-  ![JWT](IMAGE_URL)
+  <img src = "https://cdn.worldvectorlogo.com/logos/jwt-3.svg" width = "60px" height = "60px">
