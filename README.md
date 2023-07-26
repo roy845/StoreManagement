@@ -4,13 +4,22 @@ This project is a store management application built using React, Redux (for sta
 
 ## Features
 
-1. Menu Navigation: Provides navigation to "Products", "Customers", and "Purchases" pages and also for logging out the current connected user.
-2. Products Page: Displays total amount of purchased products and detailed product data. Users can add new products to customers from this page.
-3. Edit Product Page: Allows Admin users to update or delete product data.
-4. Customers Page: Showcases customers and their purchased products. Users can also buy products from this page.
-5. Edit Customer Page: Allows Admin users to update or delete customer data.
-6. Purchases Page: Allows users to search for purchases by product, customer, or date.
-7. User Authentication & Authorization: User login/register features using JWT authentication and MongoDB . User roles are defined as "User" and "Admin".
+1. User Authentication & Authorization: User login/register features using JWT authentication and MongoDB. User roles are defined as "User" and "Admin".
+
+- Login
+
+<img src = "https://imgtr.ee/images/2023/07/26/63ad47b15a1b7c93e0e2db9e3b08c7f0.png" width = "800px" height = "400px">
+
+- Register
+
+<img src="https://imgtr.ee/images/2023/07/26/d62918172d36886373cdd9850fba89b2.png" width = "800px" height = "400px">
+
+2. Menu Navigation: Provides navigation to "Products", "Customers", and "Purchases" pages and also for logging out the current connected user.
+3. Products Page: Displays total amount of purchased products and detailed product data. Users can add new products to customers from this page.
+4. Edit Product Page: Allows Admin users to update or delete product data.
+5. Customers Page: Showcases customers and their purchased products and purchased dates. Users can also buy products from this page.
+6. Edit Customer Page: Allows Admin users to update or delete customer data.
+7. Purchases Page: Allows users to search for purchases by product, customer, or date.
 
 ## Database Collections
 
