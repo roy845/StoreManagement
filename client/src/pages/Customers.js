@@ -209,8 +209,8 @@ const Customers = () => {
                           borderRight: "1px solid black",
                         }}
                       >
-                        {customer?.purchases?.map((purchase) => (
-                          <div key={purchase.productId}>
+                        {customer?.purchases?.map((purchase,index) => (
+                          <div key={index}>
                             <Link to={`/editProduct/${purchase.productId}`}>
                               {purchase.productData.Name}
                             </Link>
