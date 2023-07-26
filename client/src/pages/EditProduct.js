@@ -30,7 +30,7 @@ const EditProduct = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
+    (async () => {
       try {
         const docRef = doc(db, "products", productId);
         const docSnap = await getDoc(docRef);
@@ -53,28 +53,28 @@ const EditProduct = () => {
           customerIdsSet.add(customerId);
         });
 
-        let customersList = [];
+        // Fetch all customer data concurrently
+        const customersListPromises = Array.from(customerIdsSet).map(
+          async (customerId) => {
+            const customerDocRef = doc(db, "customers", customerId);
+            const customerDocSnap = await getDoc(customerDocRef);
 
-        for (const customerId of customerIdsSet) {
-          const customerDocRef = doc(db, "customers", customerId);
-          const customerDocSnap = await getDoc(customerDocRef);
-
-          if (customerDocSnap.exists()) {
-            customersList.push({ ...customerDocSnap.data(), id: customerId });
-          } else {
-            console.log("No such document!");
+            if (customerDocSnap.exists()) {
+              return { ...customerDocSnap.data(), id: customerId };
+            } else {
+              console.log("No such document!");
+            }
           }
-        }
+        );
 
-        setCustomers(customersList);
+        const customersList = await Promise.all(customersListPromises);
+        setCustomers(customersList.filter(Boolean));
       } catch (error) {
         console.error("Error fetching data: ", error);
       } finally {
         setIsLoading(false);
       }
-    };
-
-    fetchData();
+    })();
   }, [productId, db]);
 
   const handleInputChange = (e) => {

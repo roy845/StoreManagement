@@ -109,6 +109,7 @@ const Customers = () => {
 
     fetchProducts();
   }, [dispatch]);
+
   // Modify this useEffect to get purchases for each customer
   useEffect(() => {
     const fetchCustomers = async () => {
@@ -117,29 +118,53 @@ const Customers = () => {
         const customersSnapshot = await getDocs(customersCollection);
         const customersData = customersSnapshot.docs.map((doc) => ({
           id: doc.id,
-          purchases: [], // Change 'products' and 'purchasedDates' to a single 'purchases' array
+          purchases: [],
           ...doc.data(),
         }));
 
-        // Fetch purchases and product details for each customer
-        for (let customer of customersData) {
-          const purchasesCollection = collection(db, "purchases");
-          const purchasesSnapshot = await getDocs(purchasesCollection);
-          for (let document of purchasesSnapshot.docs) {
-            const purchase = document.data();
-            if (purchase.CustomerID === customer.id) {
-              const productSnapshot = await getDoc(
-                doc(db, "products", purchase.ProductID)
-              );
-              // Push an object containing product data, product id and purchase date
-              customer.purchases.push({
-                productData: productSnapshot.data(),
-                productId: productSnapshot.id,
-                purchaseDate: purchase.Date,
-              });
-            }
+        // Fetch all purchases for all customers in a single query
+        const purchasesCollection = collection(db, "purchases");
+        const purchasesSnapshot = await getDocs(purchasesCollection);
+
+        // Create a map to store purchases for each customer using CustomerID as the key
+        const purchasesMap = {};
+        for (const document of purchasesSnapshot.docs) {
+          const purchase = document.data();
+          if (!purchasesMap[purchase.CustomerID]) {
+            purchasesMap[purchase.CustomerID] = [];
+          }
+          purchasesMap[purchase.CustomerID].push(purchase);
+        }
+
+        // Fetch product data for each purchase in parallel using Promise.all()
+        const productFetchPromises = [];
+        for (const customer of customersData) {
+          const customerPurchases = purchasesMap[customer.id] || [];
+          for (const purchase of customerPurchases) {
+            const productFetchPromise = getDoc(
+              doc(db, "products", purchase.ProductID)
+            );
+            productFetchPromises.push(productFetchPromise);
           }
         }
+
+        const productSnapshots = await Promise.all(productFetchPromises);
+
+        // Map product data to customer purchases
+        productSnapshots.forEach((productSnapshot, index) => {
+          const customerId = purchasesSnapshot.docs[index].data().CustomerID;
+          const purchase = purchasesSnapshot.docs[index].data();
+          const customer = customersData.find((c) => c.id === customerId);
+
+          if (customer) {
+            customer.purchases.push({
+              productData: productSnapshot.data(),
+              productId: productSnapshot.id,
+              purchaseDate: purchase.Date,
+            });
+          }
+        });
+
         setIsLoading(false);
         dispatch(setCustomers(customersData));
       } catch (error) {
