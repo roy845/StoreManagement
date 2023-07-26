@@ -23,6 +23,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router";
 import { toast } from "react-hot-toast";
 import { useAuth } from "../contex/auth";
+import { useDispatch } from "react-redux";
+import { resetTotalPurchases } from "../features/products/productsSlice";
 
 const drawerWidth = 240;
 
@@ -82,6 +84,7 @@ export default function PersistentDrawerLeft() {
   );
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -131,6 +134,7 @@ export default function PersistentDrawerLeft() {
         toast.success("Logout Successfully");
         setSelectedItem(index);
         document.title = "Store Management App";
+        dispatch(resetTotalPurchases());
       },
     },
   ];
